@@ -1,100 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/Kanbas/styles.css" />
+    <link rel="stylesheet" href="/Kanbas/Navigation/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    />
+    <link rel="stylesheet" href="/libs/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="/Kanbas/Courses/Navigation/index.css" />
+
     <title>Document</title>
-</head>
-<body>
-    <table>
-        <tbody>
-            <tr>
-                <td>
-                    <ul>
-                        <li><a href="/Kanbas/Account/Profile/screen.html"> Account</a></li>
-                        <li><a href="/Kanbas/Dashboard/screen.html">Dashboard</a></li>
-                        <li><a href="/Kanbas/Courses/Home/screen.html">Courses</a></li>
-                        <li><a href="/Kanbas/Calendar/index.html">Calendar</a></li>
-                        <li><a href="/Kanbas/Inbox/index.html">Inbox</a></li>
-                        <li><a href="/Kanbas/History/index.html">History</a></li>
-                        <li><a href="/Kanbas/Studio/index.html">Studio</a></li>
-                        <li><a href="/Kanbas/Comments/index.html">Comments</a></li>
-                        <li><a href="/Kanbas/Help/index.html">Help</a></li>
-                    </ul>
-                </td>
-                <td>
-                    <ul>
-                        <li><a href="/Kanbas/Courses/Home/screen.html"> Home</a></li>
-                        <li><a href="/Kanbas/Courses/Modules/screen.html"> Modules</a></li>
-                        <li><a href="/Kanbas/Courses/Piazza/index.html"> Piazza</a></li>
-                        <li><a href=""> Zoom Meetings</a></li>
-                        <li><a href="/Kanbas/Courses/Assignments/screen.html"> Assignments</a></li>
-                        <li><a href="/Kanbas/Courses/Grades/screen.html"> Grades</a></li>
-                        <li><a href=""> People</a></li>
-                        <li><a href=""> Panopto Video</a></li>
-                        <li><a href=""> Discussion</a></li>
-                        <li><a href=""> Announcements</a></li>
-                        <li><a href=""> Pages</a></li>
-                        <li><a href=""> Files</a></li>
-                        <li><a href=""> Rubrics</a></li>
-                        <li><a href=""> Outcomes</a></li>
-                        <li><a href=""> Collaborations</a></li>
-                        <li><a href=""> Syllabus</a></li>
-                        <li><a href=""> Settings</a></li>
-                    </ul>
-                </td>
-                <td>
-                    <select>
-                        <option selected value="SpeedGrader">SpeedGrader</option>
-                    </select>
-                    <hr>
-                    <h2>Assignment Name</h2>
-                    <input type="text" value="A1"/><br><br>
-                    <textarea></textarea><br><br>
-                    Points<br>
-                    <input type="number" value="100"/>
-                    <br><br>
-                    Assignment Group<br>
-                    <select>
-                        <option selected value="">ASSIGNMENTS</option>
-                        <option value="">other</option>
-                    </select><br><br>
-                    Display Grade as <br>
-                    <select>
-                        <option selected value="">PERCENTAGE</option>
-                        <option value="">other</option>
-                    </select><br><br>
-                    Submission Type <br>
-                    <select>
-                        <option selected value="">Online</option>
-                        <option value="">other</option>
-                    </select><br><br>
-                    Online Entry Options<br>
-                    <input type="checkbox">Text Entry</input><br>
-                    <input type="checkbox">Website URL</input><br>
-                    <input type="checkbox">Media Recordings</input><br>
-                    <input type="checkbox">Student Annotations</input><br>
-                    <input type="checkbox">File Uploads</input><br>
-                    <br>
-                    Assign to <br>
-                    <input type="text" placeholder="Everyone">
-                    <br><br>
-                    Due <br>
-                    <input type="date" placeholder="01/01/2021">
-                    <br><br>
-                    Available from <br>
-                    <input type="date" placeholder="01/01/2021">
-                    <br><br>
-                    Until <br>
-                    <input type="date" placeholder="01/01/2021">
-                    <br><br>
-                    <a href="http://localhost:3000/kanbas/courses/assignments/screen.html">
-                        <button>Cancel</button>
-                    </a>
-                    
-                    <a href="http://localhost:3000/kanbas/courses/assignments/screen.html">
-                        <button>Save</button>
-                    </a>
-                </td>
-</body>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-1">
+        <ul class="wd-kanbas-navigation">
+          <li>
+            <a href="http://northeastern.edu">
+              <img src="/images/northeastern_logo.png" height="50px" />
+            </a>
+          </li>
+          <li>
+            <a href="/Kanbas/Account/Profile/screen.html"
+              ><i class="fas fa-user"></i>Account</a
+            >
+          </li>
+          <li>
+            <a href="/Kanbas/Dashboard/screen.html">
+              <i class="fas fa-columns"></i> Dashboard</a
+            >
+          </li>
+          <li class="wd-active">
+            <a href="/Kanbas/Courses/Home/screen.html">
+              <i class="fas fa-book"></i>Courses</a
+            >
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-calendar"></i> Calendar</a>
+          </li>
+          <li>
+            <a href="#"> <i class="fas fa-inbox"> </i>Inbox</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-clock"></i>History</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-tv"></i>Studio</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-arrow-right"></i>Commons</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-question"></i><br />Help</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-2">
+        <ul class="wd-navigation">
+          <li>
+            <a href="/Kanbas/Courses/Home/screen.html">Home</a>
+          </li>
+          <li>
+            <a href="/Kanbas/Courses/Modules/screen.html">Modules</a>
+          </li>
+          <li><a href="http://piazza.com">Piazza</a></li>
+          <li><a href="#">Zoom</a></li>
+          <li class="wd-active">
+            <a href="/Kanbas/Courses/Assignments/screen.html">Assignments</a>
+          </li>
+          <li><a href="#">Quizzes</a></li>
+          <li><a href="/Kanbas/Courses/Grades/screen.html">Grades</a></li>
+          <li><a href="#">People</a></li>
+        </ul>
+      </div>
+      <div class="container col-9">
+        <select>
+          <option selected value="SpeedGrader">SpeedGrader</option>
+        </select>
+        <hr />
+        <h2>Assignment Name</h2>
+        <input type="text" value="A1" /><br /><br />
+        <textarea></textarea><br /><br />
+        Points<br />
+        <input type="number" value="100" />
+        <br /><br />
+        Assignment Group<br />
+        <select>
+          <option selected value="">ASSIGNMENTS</option>
+          <option value="">other</option></select
+        ><br /><br />
+        Display Grade as <br />
+        <select>
+          <option selected value="">PERCENTAGE</option>
+          <option value="">other</option></select
+        ><br /><br />
+        Submission Type <br />
+        <select>
+          <option selected value="">Online</option>
+          <option value="">other</option></select
+        ><br /><br />
+        Online Entry Options<br />
+        <input type="checkbox" />Text Entry<br />
+        <input type="checkbox" />Website URL<br />
+        <input type="checkbox" />Media Recordings<br />
+        <input type="checkbox" />Student Annotations<br />
+        <input type="checkbox" />File Uploads<br />
+        <br />
+        Assign to <br />
+        <input type="text" placeholder="Everyone" />
+        <br /><br />
+        Due <br />
+        <input type="date" placeholder="01/01/2021" />
+        <br /><br />
+        Available from <br />
+        <input type="date" placeholder="01/01/2021" />
+        <br /><br />
+        Until <br />
+        <input type="date" placeholder="01/01/2021" />
+        <br /><br />
+        <a href="Kanbas/Courses/Assignments/screen.html">
+          <button>Cancel</button>
+        </a>
+
+        <a href="Kanbas/Courses/Assignments/screen.html">
+          <button>Save</button>
+        </a>
+      </div>
+    </div>
+  </body>
 </html>

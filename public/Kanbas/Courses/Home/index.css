@@ -1,0 +1,20 @@
+.wd-small-header {
+    color: white;
+    background-color: black;
+    height: 88px;
+}
+
+.wd-header-content {
+    padding: 10px;
+    margin: 5px;
+}
+
+.wd-header-button {
+    background-color: transparent;
+    color:white;
+    border: none;
+}
+
+.wd-pad-right-20 {
+    padding-right: 20px;
+}
