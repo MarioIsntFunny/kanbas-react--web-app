@@ -15,7 +15,7 @@ import CourseNavigation from "./Navigation";
 import RoutesComponent from "./Navigation/Routes";
 import { useState } from "react";
 
-function Courses() {
+function Courses({ courses }: { courses: any[] }) {
 	const { courseId } = useParams();
 	const location = useLocation();
 	const selectedScreen = location.pathname.split("/").pop();
