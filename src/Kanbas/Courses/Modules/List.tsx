@@ -1,14 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
 import { modules } from "../../Database";
 import { FaEllipsisV, FaCheckCircle, FaPlusCircle, FaPlus } from "react-icons/fa";
 import { useParams } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
-import { addModule, deleteModule, updateModule, setModule } from "./reducer";
+import { addModule, deleteModule, updateModule, setModule, setModules } from "./reducer";
 import { KanbasState } from "../../store";
+import * as client from "./client";
 
 function ModuleList() {
 	const { courseId } = useParams();
+	useEffect(() => {
+		client.findModulesForCourse(courseId).then((modules) => dispatch(setModules(modules)));
+	}, [courseId]);
+
+	const handleUpdateModule = async () => {
+		const status = await client.updateModule(module);
+		dispatch(updateModule(module));
+	};
+
+	const handleAddModule = () => {
+		client.createModule(courseId, module).then((module) => {
+			dispatch(addModule(module));
+		});
+	};
+
+	const handleDeleteModule = (moduleId: string) => {
+		client.deleteModule(moduleId).then((status) => {
+			dispatch(deleteModule(moduleId));
+		});
+	};
+
 	const modulesList = modules.filter((module) => module.course === courseId);
 	const [selectedModule, setSelectedModule] = useState(modulesList[0]);
 	const moduleList = useSelector((state: KanbasState) => state.modulesReducer.modules);
@@ -30,14 +52,14 @@ function ModuleList() {
 						borderColor: "red",
 						color: "white",
 					}}
-					onClick={() => dispatch(addModule({ ...module, course: courseId }))}
+					onClick={handleAddModule}
 				>
 					<FaPlus /> Module
 				</button>
 				<button className="wd-button-style">
 					<FaEllipsisV />
 				</button>
-				<button className="wd-button-style" onClick={() => dispatch(updateModule(module))}>
+				<button className="wd-button-style" onClick={handleUpdateModule}>
 					Update
 				</button>
 			</div>
@@ -65,7 +87,7 @@ function ModuleList() {
 							onClick={() => setSelectedModule(module)}
 						>
 							<button onClick={() => dispatch(setModule(module))}>Edit</button>
-							<button onClick={() => dispatch(deleteModule(module._id as string))}>
+							<button onClick={() => handleDeleteModule(module._id)}>
 								Delete
 							</button>
 							<div>
