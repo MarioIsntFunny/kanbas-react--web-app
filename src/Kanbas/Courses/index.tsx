@@ -1,4 +1,5 @@
-import { courses } from "../../Kanbas/Database";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { HiMiniBars3 } from "react-icons/hi2";
 import {
@@ -13,17 +14,23 @@ import {
 } from "react-icons/fa";
 import CourseNavigation from "./Navigation";
 import RoutesComponent from "./Navigation/Routes";
-import { useState } from "react";
 
-function Courses({ courses }: { courses: any[] }) {
+function Courses() {
+	const API_BASE = process.env.REACT_APP_API_BASE;
+	const COURSES_API = API_BASE + "/api/courses";
+	const [course, setCourse] = useState<any>({ _id: "" });
+	const findCourseById = async (courseId?: string) => {
+		const response = await axios.get(`${COURSES_API}/${courseId}`);
+		setCourse(response.data);
+	};
 	const { courseId } = useParams();
 	const location = useLocation();
 	const selectedScreen = location.pathname.split("/").pop();
-	const course = courses.find((course) => course._id === courseId);
-	const [kanbasNavigationMenuOpen, setKanbasNavigationMenuOpen] =
-		useState(false);
-	const [courseNavigationMenuOpen, setCourseNavigationMenuOpen] =
-		useState(false);
+	const [kanbasNavigationMenuOpen, setKanbasNavigationMenuOpen] = useState(false);
+	const [courseNavigationMenuOpen, setCourseNavigationMenuOpen] = useState(false);
+	useEffect(() => {
+		findCourseById(courseId);
+	}, [courseId]);
 
 	const toggleKanbasNavigationMenu = () => {
 		setKanbasNavigationMenuOpen(!kanbasNavigationMenuOpen);
@@ -34,13 +41,7 @@ function Courses({ courses }: { courses: any[] }) {
 	};
 
 	const loadCourseNavigation = () => {
-		const courseLinks = [
-			"Home",
-			"Modules",
-			"Piazza",
-			"Grades",
-			"Assignments",
-		];
+		const courseLinks = ["Home", "Modules", "Piazza", "Grades", "Assignments"];
 
 		return (
 			<ul className="wd-navigation-small">
@@ -60,10 +61,7 @@ function Courses({ courses }: { courses: any[] }) {
 					<div className="d-flex justify-content-between align-items-center wd-small-header">
 						<div className="wd-header-content">
 							<button className="wd-header-button">
-								<HiMiniBars3
-									size={"30px"}
-									onClick={toggleKanbasNavigationMenu}
-								/>
+								<HiMiniBars3 size={"30px"} onClick={toggleKanbasNavigationMenu} />
 							</button>
 						</div>
 						<div className="wd-header-content">
@@ -71,10 +69,7 @@ function Courses({ courses }: { courses: any[] }) {
 						</div>
 						<div className="wd-header-content">
 							<button className="wd-header-button">
-								<FaChevronDown
-									size={"30px"}
-									onClick={toggleCourseNavigationMenu}
-								/>
+								<FaChevronDown size={"30px"} onClick={toggleCourseNavigationMenu} />
 							</button>
 						</div>
 					</div>
@@ -106,10 +101,7 @@ function Courses({ courses }: { courses: any[] }) {
 			return (
 				<div style={{ width: "100vw" }}>
 					<div style={{ float: "inline-end" }}>
-						<button
-							className="wd-button-style"
-							onClick={toggleKanbasNavigationMenu}
-						>
+						<button className="wd-button-style" onClick={toggleKanbasNavigationMenu}>
 							<FaPlus style={{ transform: "rotate(45deg)" }} />
 						</button>
 					</div>
@@ -136,8 +128,7 @@ function Courses({ courses }: { courses: any[] }) {
 		<div>
 			<div className="d-none d-md-block">
 				<h1 className="wd-course-header">
-					<HiMiniBars3 style={{ marginRight: "20px" }} /> Course{" "}
-					{course?.name}
+					<HiMiniBars3 style={{ marginRight: "20px" }} /> Course {course?.name}
 					{
 						<span className="wd-course-screen-selected">
 							{" > "} {selectedScreen}
