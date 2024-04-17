@@ -13,7 +13,7 @@ export default function Profile() {
 	});
 	const navigate = useNavigate();
 	const fetchProfile = async () => {
-		const account = await client.profile(profile);
+		const account = await client.profile();
 		setProfile(account);
 	};
 	const save = async () => {
